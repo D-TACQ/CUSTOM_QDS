@@ -1,0 +1,17 @@
+# lia-regdef : lock-in amplifier register definitions
+# NB: use spaces
+@MODULE_ID     		0x000 0xffffffff r %08x
+@MODULE_ID.MT  		0x000 0xff000000 r %02x
+@MODULE_ID.RV  		0x000 0x0000ffff r %d
+DSP_CONTROL   		0x004 0xffffffff rw %d
+DSP_CONTROL.MODEN	0x004 0x00000001 rw %d
+DSP_CONTROL.RST 	0x004 0x00000008 rw %d
+DSP_CONTROL.EN  	0x004 0x00000010 rw %d
+DSP_CONTROL.UNPACKED 	0x004 0x00000080 rw %d
+QDS_CHANSEL		0x060 0xffffffff rw %08x
+QDS_CHANSEL.X4		0x060 0xff000000 rw %d
+QDS_CHANSEL.X3		0x060 0x00ff0000 rw %d
+QDS_CHANSEL.X2		0x060 0x0000ff00 rw %d
+QDS_CHANSEL.X1		0x060 0x000000ff rw %d
+QDS_THRESH		0x064 0xffffffff rw %d
+QDS_AVG			0x068 0x00000007 rw %d

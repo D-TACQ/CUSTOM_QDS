@@ -2,7 +2,7 @@
 # Quench Detect, a custom DSP package
 DC=$(date +%y%m%d%H%M)
 SEQ=35
-PKG=custom_qcd
+PKG=custom_qds
 PACKAGES=../../PACKAGES
 
 rm -Rf opkg/*
