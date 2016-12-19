@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DEV=LIA
+DEV=QDS
 DIR=/dev/dsp1/
 
 #httpd doesn't like names with periods..
