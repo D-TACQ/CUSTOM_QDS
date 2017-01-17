@@ -1,6 +1,5 @@
-create_asyn_channel S014 127.0.0.1:4220
-
-CPRAMS="UUT=${HOST},SITE=0,SPORT=S014"
+create_asyn_channel S14 127.0.0.1:4234
+CPRAMS="UUT=${HOST},SITE=0,SPORT=S14"
 dblr '"db/qds.db","'${CPRAMS}'"'
 
 for yy in 1 2 3 4

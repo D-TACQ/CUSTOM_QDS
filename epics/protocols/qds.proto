@@ -5,12 +5,12 @@ ExtraInput = Ignore;
 
 
 set_chansel {
-	out "QDS_CHANSEL.\$1 %d";
+	out "QDS_CHANSEL.X\$1 %d";
 	in "";
 }
 
 get_chansel {
-	out "QDS_CHANSEL.\$1";
+	out "QDS_CHANSEL.X\$1";
 	in "%d";
 }
 
@@ -35,6 +35,6 @@ get_thresh {
 
 
 get_y {
-	out "QDS_\$1";
+	out "QDS_Y\$1";
 	in "%d";
 }
