@@ -18,7 +18,7 @@ record(ao, "${UUT}:QDS:THRESH") {
 
 record(ao, "${UUT}:QDS:THRESH:w") {
 	field(DTYP, "stream")
-	field(OUT,  "@qds.proto set_chansel(${yy}) ${SPORT}")
+	field(OUT,  "@qds.proto set_thresh ${SPORT}")
 	field(DISV, "1")
 	field(SDIS, "${UUT}:QDS:CHANSEL:${yy}:w.PACT")
 	field(OMSL, "closed_loop")
@@ -34,7 +34,7 @@ record(ao, "${UUT}:QDS:THRESH:w") {
 
 record(ai, "${UUT}:QDS:THRESH:r") {
 	field(DTYP, "stream")
-	field(INP,  "@qds.proto get_chansel(${yy}) ${SPORT}")
+	field(INP,  "@qds.proto get_thresh ${SPORT}")
 	field(SCAN, "1 second")
 	field(FLNK, "${UUT}:QDS:THRESH:s")
         field(DRVL, "-10.000")
@@ -71,7 +71,7 @@ record(longout, "${UUT}:QDS:AVG") {
 
 record(longout, "${UUT}:QDS:AVG:w") {
 	field(DTYP, "stream")
-	field(OUT,  "@qds.proto set_chansel(${yy}) ${SPORT}")
+	field(OUT,  "@qds.proto set_avg ${SPORT}")
 	field(DISV, "1")
 	field(SDIS, "${UUT}:QDS:CHANSEL:${yy}:w.PACT")
 	field(OMSL, "closed_loop")
@@ -80,7 +80,7 @@ record(longout, "${UUT}:QDS:AVG:w") {
 
 record(longin, "${UUT}:QDS:AVG:r") {
 	field(DTYP, "stream")
-	field(INP,  "@qds.proto get_chansel(${yy}) ${SPORT}")
+	field(INP,  "@qds.proto get_avg ${SPORT}")
 	field(SCAN, "1 second")
 	field(FLNK, "${UUT}:QDS:THRESH:s")
 }
