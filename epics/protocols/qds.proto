@@ -1,0 +1,40 @@
+Terminator = LF;
+ExtraInput = Ignore;
+
+
+
+
+set_chansel {
+	out "QDS_CHANSEL.\$1 %d";
+	in "";
+}
+
+get_chansel {
+	out "QDS_CHANSEL.\$1";
+	in "%d";
+}
+
+set_avg {
+	out "QDS_AVG %d";
+	in "";
+}
+
+get_avg {
+	out "QDS_AVG";
+	in "%d";
+}
+
+set_thresh {
+	out "QDS_THRESH %d";
+	in "";
+}
+get_thresh {
+	out "QDS_THRESH";
+	in "%d"; 
+}
+
+
+get_y {
+	out "QDS_\$1";
+	in "%d";
+}

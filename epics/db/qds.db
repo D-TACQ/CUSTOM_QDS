@@ -1,0 +1,93 @@
+
+
+# RW diamond
+record(ao, "${UUT}:QDS:THRESH") {
+	field(DTYP, "Soft Channel")
+	field(LOPR, "1")
+	field(HOPR, "16")
+	field(DESC, "Select CH for Y$yy")
+	field(FLNK, "${UUT}:QDS:THRESH:w PP")
+        field(DRVL, "-10.000")
+        field(DRVH, "+9.999")
+        field(LINR, "LINEAR")
+        field(ESLO, "3.0518e-4")
+        field(HOPR, "9.999")
+        field(LOPR, "-10.000")
+        field(EGU,  "V")		
+}
+
+record(ao, "${UUT}:QDS:THRESH:w") {
+	field(DTYP, "stream")
+	field(OUT,  "@qds.proto set_chansel(${yy}) ${SPORT}")
+	field(DISV, "1")
+	field(SDIS, "${UUT}:QDS:CHANSEL:${yy}:w.PACT")
+	field(OMSL, "closed_loop")
+	field(DOL,  "${UUT}:QDS:CHANSEL:${yy}")
+        field(DRVL, "-10.000")
+        field(DRVH, "+9.999")
+        field(LINR, "LINEAR")
+        field(ESLO, "3.0518e-4")
+        field(HOPR, "9.999")
+        field(LOPR, "-10.000")
+        field(EGU,  "V")	
+}
+
+record(ai, "${UUT}:QDS:THRESH:r") {
+	field(DTYP, "stream")
+	field(INP,  "@qds.proto get_chansel(${yy}) ${SPORT}")
+	field(SCAN, "1 second")
+	field(FLNK, "${UUT}:QDS:THRESH:s")
+        field(DRVL, "-10.000")
+        field(DRVH, "+9.999")
+        field(LINR, "LINEAR")
+        field(ESLO, "3.0518e-4")
+        field(HOPR, "9.999")
+        field(LOPR, "-10.000")
+        field(EGU,  "V")	
+}
+
+record(ao, "${UUT}:QDS:THRESH:s") {
+	field(DTYP, "Soft Channel")
+	field(OMSL, "closed_loop")
+	field(DOL,  "${UUT}:QDS:THRESH:r NPP")
+	field(OUT,  "${UUT}:QDS:THRESH")
+        field(DRVL, "-10.000")
+        field(DRVH, "+9.999")
+        field(LINR, "LINEAR")
+        field(ESLO, "3.0518e-4")
+        field(HOPR, "9.999")
+        field(LOPR, "-10.000")
+        field(EGU,  "V")	
+}
+
+# RW diamond
+record(longout, "${UUT}:QDS:AVG") {
+	field(DTYP, "Soft Channel")
+	field(LOPR, "1")
+	field(HOPR, "16")
+	field(DESC, "Select CH for Y$yy")
+	field(FLNK, "${UUT}:QDS:THRESH:w PP")	
+}
+
+record(longout, "${UUT}:QDS:AVG:w") {
+	field(DTYP, "stream")
+	field(OUT,  "@qds.proto set_chansel(${yy}) ${SPORT}")
+	field(DISV, "1")
+	field(SDIS, "${UUT}:QDS:CHANSEL:${yy}:w.PACT")
+	field(OMSL, "closed_loop")
+	field(DOL,  "${UUT}:QDS:CHANSEL:${yy}")
+}
+
+record(longin, "${UUT}:QDS:AVG:r") {
+	field(DTYP, "stream")
+	field(INP,  "@qds.proto get_chansel(${yy}) ${SPORT}")
+	field(SCAN, "1 second")
+	field(FLNK, "${UUT}:QDS:THRESH:s")
+}
+
+record(longout, "${UUT}:QDS:AVG:s") {
+	field(DTYP, "Soft Channel")
+	field(OMSL, "closed_loop")
+	field(DOL,  "${UUT}:QDS:THRESH:r NPP")
+	field(OUT,  "${UUT}:QDS:THRESH")
+}
