@@ -5,5 +5,5 @@ dblr '"db/qds.db","${CPRAMS}'"'
 
 for yy in 1 2 3 4
 do
-	dblr '"db/qds4.db","${CPRAMS},yy=${yy}'"'
+	dblr '"db/qds4.db","'${CPRAMS},yy=${yy}'"'
 done
