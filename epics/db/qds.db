@@ -37,8 +37,6 @@ record(ai, "${UUT}:QDS:THRESH:r") {
 	field(INP,  "@qds.proto get_thresh ${SPORT}")
 	field(SCAN, "1 second")
 	field(FLNK, "${UUT}:QDS:THRESH:s")
-        field(DRVL, "-10.000")
-        field(DRVH, "+9.999")
         field(LINR, "LINEAR")
         field(ESLO, "3.0518e-4")
         field(HOPR, "9.999")
