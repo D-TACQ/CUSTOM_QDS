@@ -7,6 +7,7 @@ DSP_CONTROL   		0x004 0xffffffff rw %d
 DSP_CONTROL.MODEN	0x004 0x00000001 rw %d
 DSP_CONTROL.RST 	0x004 0x00000008 rw %d
 DSP_CONTROL.EN  	0x004 0x00000010 rw %d
+DSP_CONTROL.DATA_INC	0x004 0x00000020 rw %d
 DSP_CONTROL.UNPACKED 	0x004 0x00000080 rw %d
 QDS_CHANSEL		0x060 0xffffffff rw %08x
 QDS_CHANSEL.X4		0x060 0xff000000 rw %d
@@ -15,3 +16,8 @@ QDS_CHANSEL.X2		0x060 0x0000ff00 rw %d
 QDS_CHANSEL.X1		0x060 0x000000ff rw %d
 QDS_THRESH		0x064 0xffffffff rw %d
 QDS_AVG			0x068 0x00000007 rw %d
+QDS_Y1			0x070 0xffffffff rw %d
+QDS_Y2			0x074 0xffffffff rw %d
+QDS_Y3			0x078 0xffffffff rw %d
+QDS_Y4			0x07c 0xffffffff rw %d
+
