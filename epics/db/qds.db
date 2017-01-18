@@ -59,10 +59,13 @@ record(ao, "${UUT}:QDS:THRESH:s") {
 }
 
 # RW diamond
-record(longout, "${UUT}:QDS:AVG") {
+record(mbbo, "${UUT}:QDS:AVG") {
 	field(DTYP, "Soft Channel")
-	field(LOPR, "1")
-	field(HOPR, "16")
+	field(NOBT, "2")
+	field(ZRST, "1")
+	field(ONST, "2")
+	field(TWST, "4")
+	field(THST, "8")	
 	field(DESC, "Average N values0")
 	field(FLNK, "${UUT}:QDS:THRESH:w PP")	
 }
@@ -93,6 +96,6 @@ record(longout, "${UUT}:QDS:AVG:s") {
 record(bi, "${UUT}:QDS:EVENT") {
 	field(DTYP, "stream")
 	field(INP,  "@qds.proto get_event ${SPORT}")
-	field(SCAN, "0.1 second")
+	field(SCAN, ".1 second")
 	field(DESC, "indicates threshold crossed")
 }
