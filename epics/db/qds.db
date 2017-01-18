@@ -67,7 +67,7 @@ record(mbbo, "${UUT}:QDS:AVG") {
 	field(TWST, "4")
 	field(THST, "8")	
 	field(DESC, "Average N values0")
-	field(FLNK, "${UUT}:QDS:THRESH:w PP")	
+	field(FLNK, "${UUT}:QDS:AVG:w PP")	
 }
 
 record(longout, "${UUT}:QDS:AVG:w") {
