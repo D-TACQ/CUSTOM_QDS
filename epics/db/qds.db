@@ -89,3 +89,10 @@ record(longout, "${UUT}:QDS:AVG:s") {
 	field(DOL,  "${UUT}:QDS:AVG:r NPP")
 	field(OUT,  "${UUT}:QDS:AVG")
 }
+
+record(bi, "${UUT}:QDS:EVENT") {
+	field(DTYP, "stream")
+	field(INP,  "@qds.proto get_event ${SPORT}")
+	field(SCAN, "0.1 second")
+	field(DESC, "indicates threshold crossed")
+}
