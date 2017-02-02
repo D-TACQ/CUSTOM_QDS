@@ -15,9 +15,9 @@ cat - <<EOF
 EOF
 }
 
-C4R10=/dev/shm/c4rR10
+C3R8=/dev/shm/c3rR8
 
-[ -e $C4R10 ] || cCrR 4 10 > $C4R10
+[ -e $C3R8 ] || cCrR 3 8 > $C3R8
 
 dump_regs() {
 	cd /dev/dsp1; lscat
@@ -41,7 +41,7 @@ monitor() {
 	while [ 1 ]
 	do
 		[ $ADDED_WEB -eq 0 ] && add_web				
-		dump_regs | fs2xml --kvp -o /dev/shm/$XMLNAME.xml -s $C4R10
+		dump_regs | fs2xml --kvp -o /dev/shm/$XMLNAME.xml -s $C3R8
 		sleep 1		
 	done
 }
