@@ -7,6 +7,8 @@ record(longout, "${UUT}:QDS:CHANSEL:${yy}") {
 	field(DESC, "Select CH for Y$yy")
 	field(FLNK, "${UUT}:QDS:CHANSEL:${yy}:w PP")	
 	field(PINI, "YES")
+	field(LOPR, "1")
+	field(HOPR, "16")
 }
 
 record(longout, "${UUT}:QDS:CHANSEL:${yy}:w") {
