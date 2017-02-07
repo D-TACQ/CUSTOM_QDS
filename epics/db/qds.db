@@ -14,6 +14,7 @@ record(ao, "${UUT}:QDS:THRESH") {
         field(HOPR, "9.999")
         field(LOPR, "-10.000")
         field(EGU,  "V")		
+	field(PINI, "YES")
 }
 
 record(ao, "${UUT}:QDS:THRESH:w") {
@@ -91,7 +92,7 @@ record(bo, "${UUT}:QDS:RESET:t") {
 record(bo, "${UUT}:QDS:RESET") {
 	field(DTYP, "stream")
 	field(OUT,  "@qds.proto set_reset ${SPORT}")
-	field(HIGH, ".1")
+	field(HIGH, ".5")
 	field(ZNAM, "RUN")
 	field(ONAM, "RESET")
 }

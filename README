@@ -3,7 +3,7 @@ custom_qds
 Support for Quench Detect DSP package
 
 Customization:
-/usr/local/CARE/QDS/quench_init : sets default channel map and connects Quench Detect signal ..
+/usr/local/CARE/QDS/quench_init  [X1 X2 X3 X4] : sets default channel map and connects Quench Detect signal ..
 
 
 
