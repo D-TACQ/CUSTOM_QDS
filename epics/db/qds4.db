@@ -12,7 +12,7 @@ record(longout, "${UUT}:QDS:CHANSEL:${yy}:w") {
 	field(DTYP, "stream")
 	field(OUT,  "@qds.proto set_chansel(${yy}) ${SPORT}")
 	field(DISV, "1")
-	field(SDIS, "${UUT}:QDS:CHANSEL:${yy}:w.PACT")
+	field(SDIS, "${UUT}:QDS:CHANSEL:${yy}:r.PACT")
 	field(OMSL, "closed_loop")
 	field(DOL,  "${UUT}:QDS:CHANSEL:${yy}")
 }

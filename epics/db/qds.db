@@ -74,9 +74,26 @@ record(longout, "${UUT}:QDS:AVG:w") {
 	field(DTYP, "stream")
 	field(OUT,  "@qds.proto set_avg ${SPORT}")
 	field(DISV, "1")
-	field(SDIS, "${UUT}:QDS:AVG:w.PACT")
+	field(SDIS, "${UUT}:QDS:AVG:r.PACT")
 	field(OMSL, "closed_loop")
 	field(DOL,  "${UUT}:QDS:AVG")
+	field(FLNK, "${UUT}:QDS:RESET:t")
+}
+
+record(bo, "${UUT}:QDS:RESET:t") {
+	field(DTYP, "Soft Channel")
+	field (DOL, "1")
+	field (OMSL, "closed_loop")
+#  field (HIGH, "0.5")
+	field (OUT, "${UUT}:QDS:RESET PP")
+	
+}
+record(bo, "${UUT}:QDS:RESET") {
+	field(DTYP, "stream")
+	field(OUT,  "@qds.proto set_reset ${SPORT}")
+	field(HIGH, ".1")
+	field(ZNAM, "RUN")
+	field(ONAM, "RESET")
 }
 
 record(longin, "${UUT}:QDS:AVG:r") {

@@ -43,3 +43,9 @@ get_event {
 	out "QDS_STATUS.EVENT";
 	in "%d";
 }
+
+set_reset {
+	out "DSP_CONTROL.RST %d";
+	in "";
+}
+
