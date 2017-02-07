@@ -95,6 +95,7 @@ record(bo, "${UUT}:QDS:RESET") {
 	field(HIGH, ".5")
 	field(ZNAM, "RUN")
 	field(ONAM, "RESET")
+	field(DOL,  "1")
 	field(PINI, "YES")
 }
 

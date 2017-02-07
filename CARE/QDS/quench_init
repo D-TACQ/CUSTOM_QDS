@@ -7,9 +7,11 @@ echo -e "Routing Quench Event signal out of motherboard GPIO uFL...\n"
 set.site 0 SIG:FP:GPIO EVT1
 
 set_chansel() {
-	echo ${2:-0} > /dev/dsp1/QDS_CHANSEL.X$1
+	sel=${2:-$1}
+	echo set Channel Select X$1 to $sel
+	echo $sel > /dev/dsp1/QDS_CHANSEL.X$1
 }
-echo -e "Setting Quench CHAN_SEL to 1,2,3,4...\n"
+
 set_chansel 1 1
 set_chansel 2 2 
 set_chansel 3 3
