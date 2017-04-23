@@ -117,30 +117,33 @@ record(longin, "${UUT}:QDS:EVENTCOUNT") {
 	field(DTYP, "stream")
 	field(INP,  "@qds.proto get_event_count ${SP2}")
 	field(SCAN, "I/O Intr")
-	field(FLNK, "${UUT}:QDS:EVENT PP")
+#	field(FLNK, "${UUT}:QDS:EVENT PP")
+	field(FLNK, "${UUT}:QDS:EVENTcalc")
 }
 record(bi, "${UUT}:QDS:EVENT") {
 	field(DTYP, "stream")
 	field(INP,  "@qds.proto get_event ${SPORT}")
- 	field(SCAN, "Passive")	
-#	field(SCAN, ".1 second")
+# 	field(SCAN, "Passive")	
+	field(SCAN, ".1 second")
 	field(DESC, "indicates threshold crossed")
-	field(FLNK, "${UUT}:QDS:EVENTcalc")
+	
 	field(ZNAM, "SAFE")
         field(ONAM, "TRIP")	
 }
 
 record(calcout, "${UUT}:QDS:EVENTcalc") {
-	field(INPA, "${UUT}:QDS:EVENT")
-	field(CALC, "A")
+	field(INPA, "${UUT}:QDS:EVENTCOUNT")
+	field(INPB, "${UUT}:QDS:EVENTcalc.LA")
+	field(CALC, "A - B != 0")
 	field(OUT, "${UUT}:QDS:EVENTLATCH")
 	field(DOPT, "Use CALC")
-	field(OOPT, "Transition To Non-zero")
+	field(OOPT, "When Non-zero")
+	field(FLNK, "${UUT}:QDS:EVENTLATCH PP")
 }
 
 record(bo, "${UUT}:QDS:EVENTLATCH") {
 	field(DTYP, "Soft Channel")	
-	field(SCAN, ".1 second")
+	field(SCAN, "Passive")
 	field(DESC, "indicates threshold crossed")
 	field(FLNK, "${UUT}:QDS:EVENTLATCH")
 	field(ZNAM, "SAFE")
