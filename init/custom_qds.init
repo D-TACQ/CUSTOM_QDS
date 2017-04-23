@@ -22,3 +22,13 @@ echo "DSP sites 14, 15 active on 4224, 4225"
 
 monitor_dsp1 2>&1 >/dev/null  &
 
+cat >/etc/inetd.dsp.conf - <<EOF
+4281 stream tcp nowait root cat cat /dev/dsp1.event
+4282 stream tcp nowait root cat cat /dev/dsp2.event
+EOF
+
+inetd /etc/inetd.dsp.conf
+
+set.sys /dev/dsp1/QDS_INTCSR 1
+
+

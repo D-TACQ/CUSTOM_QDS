@@ -39,6 +39,10 @@ get_y {
 	in "%d";
 }
 
+get_event_count {
+	in "%d %*x";
+}
+
 get_event {
 	out "QDS_STATUS.EVENT";
 	in "%d";
