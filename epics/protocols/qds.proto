@@ -40,7 +40,7 @@ get_y {
 }
 
 get_event_count {
-	in "%d %*x";
+	in "%d, 0x%*x";
 }
 
 get_event {
