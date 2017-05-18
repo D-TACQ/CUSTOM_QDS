@@ -25,17 +25,17 @@ get_avg {
 }
 
 set_thresh {
-	out "QDS_THRESH %d";
+	out "QDS_THR\$1 %d";
 	in "";
 }
 get_thresh {
-	out "QDS_THRESH";
+	out "QDS_THR\$1";
 	in "%d"; 
 }
 
 
-get_y {
-	out "QDS_Y\$1";
+get_x {
+	out "QDS_X\$1";
 	in "%d";
 }
 

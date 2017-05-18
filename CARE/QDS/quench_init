@@ -12,8 +12,8 @@ set_chansel() {
 	echo $sel > /dev/dsp1/QDS_CHANSEL.X$1
 }
 
-set_chansel 1 1
-set_chansel 2 2 
-set_chansel 3 3
-set_chansel 4 2
+for ch in $(seq 1 8)
+do
+	set_chansel $ch $ch
+done
 
