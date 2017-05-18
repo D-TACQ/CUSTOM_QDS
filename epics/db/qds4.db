@@ -2,13 +2,13 @@
 # RW diamond
 record(longout, "${UUT}:QDS:CHANSEL:${yy}") {
 	field(DTYP, "Soft Channel")
-	field(LOPR, "1")
+	field(LOPR, "0")
 	field(HOPR, "16")
 	field(DESC, "Select CH for Y$yy")
 	field(FLNK, "${UUT}:QDS:CHANSEL:${yy}:w PP")	
 	field(PINI, "YES")
 	field(DOL,  "${yy}")
-	field(DRVL, "1")
+	field(DRVL, "0")
 	field(DRVH, "16")
 }
 
@@ -52,3 +52,43 @@ record(ai, "${UUT}:QDS:Y${yy}") {
 	field(LOPR, "-10.000")	
 }
 
+
+# RW diamond
+record(bo, "${UUT}:QDS:TERM:EN:${yy}") {
+	field(DTYP, "Soft Channel")
+	field(DESC, "Enable Term $yy")
+	field(FLNK, "${UUT}:QDS:TERM:EN:${yy}:w PP")	
+	field(PINI, "YES")
+	field(DOL,  "0")
+}
+
+record(bo, "${UUT}:QDS:TERM:EN:${yy}:w") {
+	field(DTYP, "stream")
+	field(OUT,  "@qds.proto set_term_en(${yy}) ${SPORT}")
+	field(DISV, "1")
+	field(SDIS, "${UUT}:QDS:TERM:EN:${yy}:r.PACT")
+	field(OMSL, "closed_loop")
+	field(DOL,  "${UUT}:QDS:TERM:EN:${yy}")
+}
+
+record(bi, "${UUT}:QDS:TERM:EN:${yy}:r") {
+	field(DTYP, "stream")
+	field(INP,  "@qds.proto get_term_en(${yy}) ${SPORT}")
+	field(SCAN, "1 second")
+	field(FLNK, "${UUT}:QDS:TERM:EN:${yy}:s")
+}
+
+record(bo, "${UUT}:QDS:TERM:EN:${yy}:s") {
+	field(DTYP, "Soft Channel")
+	field(OMSL, "closed_loop")
+	field(DOL,  "${UUT}:QDS:TERM:EN:${yy}:r NPP")
+	field(OUT,  "${UUT}:QDS:TERM:EN:${yy}")
+}
+
+
+record(bi, "${UUT}:QDS:TERM:STAT:${yy}") {
+	field(DTYP, "stream")
+	field(DESC, "Term has triggered $yy")
+	field(INP,  "@qds.proto get_term_stat(${yy}) ${SPORT}")
+	field(SCAN, ".1 second")
+}

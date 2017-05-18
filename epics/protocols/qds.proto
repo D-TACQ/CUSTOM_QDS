@@ -53,3 +53,31 @@ set_reset {
 	in "";
 }
 
+
+set_term_en {
+	out "QDS_STATUS.EN\$1 %d";
+}
+
+get_term_en {
+	out "QDS_STATUS.EN\$1";
+	in "%d";
+}
+
+get_term_stat {
+	out "QDS_STATUS.Y\$1";
+	in "%d";
+}
+
+get_heart {
+	out "QDS_STATUS.HEART";
+	in "%d";
+}
+
+get_latch {
+	out "QDS_STATUS.LATCH";
+	in "%d";
+}
+
+set_latch_clr {
+	out "QDS_STATUS.LATCH_CLR %d";
+}

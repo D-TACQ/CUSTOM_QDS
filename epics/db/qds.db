@@ -131,6 +131,33 @@ record(bi, "${UUT}:QDS:EVENT") {
         field(ONAM, "TRIP")	
 }
 
+
+record(bi, "${UUT}:QDS:HEART") {
+	field(DTYP, "stream")
+	field(INP,  "@qds.proto get_heart ${SPORT}")
+# 	field(SCAN, "Passive")	
+	field(SCAN, ".1 second")
+	field(DESC, "indicates qds capture active")
+}
+
+record(bi, "${UUT}:QDS:LATCH") {
+	field(DTYP, "stream")
+	field(INP,  "@qds.proto get_latch ${SPORT}")
+# 	field(SCAN, "Passive")	
+	field(SCAN, ".1 second")
+	field(DESC, "qds has triggered")
+}
+record(bo, "${UUT}:QDS:LATCHCLR") {
+	field(DTYP, "stream")
+	field(OUT,  "@qds.proto set_latch_clr ${SPORT}")
+	field(SCAN, "Passive")
+	field(HIGH, ".5")
+	field(ZNAM, "OFF")
+	field(ONAM, "CLR")
+	field(DESC, "set 1 to clr latch")
+	# WORKTODO  should be a pulse.
+}
+
 record(calcout, "${UUT}:QDS:EVENTcalc") {
 	field(INPA, "${UUT}:QDS:EVENTCOUNT")
 	field(INPB, "${UUT}:QDS:EVENTcalc.LA")
