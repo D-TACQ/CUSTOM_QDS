@@ -39,6 +39,10 @@ get_x {
 	in "%d";
 }
 
+get_bq {
+	in "%d";
+}
+
 get_event_count {
 	in "%d, 0x%*x";
 }
@@ -68,9 +72,8 @@ get_term_stat {
 	in "%d";
 }
 
-get_heart {
-	out "QDS_STATUS.HEART";
-	in "%d";
+set_heart {
+	out "QDS_STATUS.HEART %d";
 }
 
 get_latch {

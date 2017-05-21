@@ -62,6 +62,13 @@ record(longin, "${UUT}:QDS:EVENTCOUNT") {
 #	field(FLNK, "${UUT}:QDS:EVENT PP")
 	field(FLNK, "${UUT}:QDS:EVENTcalc")
 }
+
+record(longin, "${UUT}:QDS:BUFFER_COUNT"){
+	field(DTYP, "stream")
+	field(INP,  "@qds.proto get_bq ${SPQ}")
+	field(SCAN, "I/O Intr")
+}
+
 record(bi, "${UUT}:QDS:EVENT") {
 	field(DTYP, "stream")
 	field(INP,  "@qds.proto get_event ${SPORT}")
@@ -73,12 +80,15 @@ record(bi, "${UUT}:QDS:EVENT") {
         field(ONAM, "TRIP")	
 }
 
-
-record(bi, "${UUT}:QDS:HEART") {
+record(calcout, "${UUT}:QDS:hbcalc") {
+	field(SCAN, "1 second")
+	field(INPA, "${UUT}:QDS:BUFFER_COUNT")
+	field(INPB, "${UUT}:QDS:hbcalc.LA")
+	field(CALC, "
+}
+record(bo, "${UUT}:QDS:HEART") {
 	field(DTYP, "stream")
-	field(INP,  "@qds.proto get_heart ${SPORT}")
-# 	field(SCAN, "Passive")	
-	field(SCAN, ".1 second")
+	field(INP,  "@qds.proto set_heart ${SPORT}")
 	field(DESC, "indicates qds capture active")
 }
 
