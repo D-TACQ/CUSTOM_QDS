@@ -79,7 +79,7 @@ clr_term_stat {
 }
 
 set_heart {
-	out "QDS_STATUS.HEART %d";
+	out "DSP_CONTROL.HEART %d";
 	in "";
 }
 
