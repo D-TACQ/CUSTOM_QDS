@@ -72,6 +72,10 @@ get_term_stat {
 	in "%d";
 }
 
+clr_term_stat {
+	out "QDS_STATUS.Y\$1 1";
+}
+
 set_heart {
 	out "QDS_STATUS.HEART %d";
 }

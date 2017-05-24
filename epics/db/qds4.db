@@ -38,9 +38,14 @@ record(bi, "${UUT}:QDS:TERM:STAT:${yy}") {
 	field(DTYP, "stream")
 	field(DESC, "Term has triggered $yy")
 	field(INP,  "@qds.proto get_term_stat(${yy}) ${SPORT}")
-	field(SCAN, ".1 second")
+	field(SCAN, ".5 second")
 }
 
+record(bo, "${UUT}:QDS:TERM:STAT:${yy}:CLR") {
+	field(DTYP, "stream")
+	field(DESC, "clear $yy status")
+	field(OUT,  "@qds.proto clr_term_stat(${yy}) ${SPORT}")	
+}
 # RW diamond
 record(ao, "${UUT}:QDS:THRESH:${yy}") {
 	field(DTYP, "Soft Channel")

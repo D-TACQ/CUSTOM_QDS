@@ -73,7 +73,7 @@ record(bi, "${UUT}:QDS:EVENT") {
 	field(DTYP, "stream")
 	field(INP,  "@qds.proto get_event ${SPORT}")
 # 	field(SCAN, "Passive")	
-	field(SCAN, ".1 second")
+	field(SCAN, ".5 second")
 	field(DESC, "indicates threshold crossed")
 	
 	field(ZNAM, "SAFE")
@@ -84,11 +84,14 @@ record(calcout, "${UUT}:QDS:hbcalc") {
 	field(SCAN, "1 second")
 	field(INPA, "${UUT}:QDS:BUFFER_COUNT")
 	field(INPB, "${UUT}:QDS:hbcalc.LA")
-	field(CALC, "
+# toggle if counting	
+	field(CALC, "A != B ? A&1: 0")
+	field(OUT,  "${UUT}:QDS:HEART")
 }
+
 record(bo, "${UUT}:QDS:HEART") {
 	field(DTYP, "stream")
-	field(INP,  "@qds.proto set_heart ${SPORT}")
+	field(OUT,  "@qds.proto set_heart ${SPORT}")
 	field(DESC, "indicates qds capture active")
 }
 
@@ -96,7 +99,7 @@ record(bi, "${UUT}:QDS:LATCH") {
 	field(DTYP, "stream")
 	field(INP,  "@qds.proto get_latch ${SPORT}")
 # 	field(SCAN, "Passive")	
-	field(SCAN, ".1 second")
+	field(SCAN, ".5 second")
 	field(DESC, "qds has triggered")
 }
 record(bo, "${UUT}:QDS:LATCHCLR") {
@@ -108,23 +111,4 @@ record(bo, "${UUT}:QDS:LATCHCLR") {
 	field(ONAM, "CLR")
 	field(DESC, "set 1 to clr latch")
 	# WORKTODO  should be a pulse.
-}
-
-record(calcout, "${UUT}:QDS:EVENTcalc") {
-	field(INPA, "${UUT}:QDS:EVENTCOUNT")
-	field(INPB, "${UUT}:QDS:EVENTcalc.LA")
-	field(CALC, "A - B != 0")
-	field(OUT, "${UUT}:QDS:EVENTLATCH")
-	field(DOPT, "Use CALC")
-	field(OOPT, "When Non-zero")
-	field(FLNK, "${UUT}:QDS:EVENTLATCH PP")
-}
-
-record(bo, "${UUT}:QDS:EVENTLATCH") {
-	field(DTYP, "Soft Channel")	
-	field(SCAN, "Passive")
-	field(DESC, "indicates threshold crossed")
-	field(FLNK, "${UUT}:QDS:EVENTLATCH")
-	field(ZNAM, "SAFE")
-        field(ONAM, "TRIP")	
 }

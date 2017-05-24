@@ -1,0 +1,52 @@
+# RW diamond
+record(longout, "${UUT}:QDS:CHANSEL:${yy}") {
+	field(DTYP, "Soft Channel")
+	field(LOPR, "0")
+	field(HOPR, "16")
+	field(DESC, "Select CH for Y$yy")
+	field(FLNK, "${UUT}:QDS:CHANSEL:${yy}:w PP")	
+	field(PINI, "YES")
+	field(DOL,  "${yy}")
+	field(DRVL, "0")
+	field(DRVH, "16")
+}
+
+record(longout, "${UUT}:QDS:CHANSEL:${yy}:w") {
+	field(DTYP, "stream")
+	field(OUT,  "@qds.proto set_chansel(${yy}) ${SPORT}")
+	field(DISV, "1")
+	field(SDIS, "${UUT}:QDS:CHANSEL:${yy}:r.PACT")
+	field(OMSL, "closed_loop")
+	field(DOL,  "${UUT}:QDS:CHANSEL:${yy}")
+}
+
+record(longin, "${UUT}:QDS:CHANSEL:${yy}:r") {
+	field(DTYP, "stream")
+	field(INP,  "@qds.proto get_chansel(${yy}) ${SPORT}")
+	field(SCAN, "1 second")
+	field(FLNK, "${UUT}:QDS:CHANSEL:${yy}:s")
+}
+
+record(longout, "${UUT}:QDS:CHANSEL:${yy}:s") {
+	field(DTYP, "Soft Channel")
+	field(OMSL, "closed_loop")
+	field(DOL,  "${UUT}:QDS:CHANSEL:${yy}:r NPP")
+	field(OUT,  "${UUT}:QDS:CHANSEL:${yy}")
+}
+
+record(ai, "${UUT}:QDS:X${yy}") {
+	field(DTYP, "stream")
+	field(INP,  "@qds.proto get_x(${yy}) ${SPORT}")
+	field(SCAN, ".1 second")
+	field(DESC, "instantaneous X value")
+	field(EGU,  "V")
+	field(PREC,  "3")
+	field(EOFF, "0")
+	field(EGUL, "-100")
+	field(EGUF, "+9.999")
+	field(LINR, "LINEAR")
+	field(EGU,  "Volts")
+	field(ESLO, "3.0518e-4")
+	field(HOPR, "9.999")
+	field(LOPR, "-10.000")	
+}
