@@ -60,6 +60,7 @@ set_reset {
 
 set_term_en {
 	out "QDS_STATUS.EN\$1 %d";
+	in "";
 }
 
 get_term_en {
@@ -74,10 +75,12 @@ get_term_stat {
 
 clr_term_stat {
 	out "QDS_STATUS.Y\$1 1";
+	in "";
 }
 
 set_heart {
 	out "QDS_STATUS.HEART %d";
+	in "";
 }
 
 get_latch {
@@ -87,4 +90,5 @@ get_latch {
 
 set_latch_clr {
 	out "QDS_STATUS.LATCH_CLR %d";
+	in "";
 }
