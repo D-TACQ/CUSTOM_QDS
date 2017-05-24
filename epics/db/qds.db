@@ -59,8 +59,7 @@ record(longin, "${UUT}:QDS:EVENTCOUNT") {
 	field(DTYP, "stream")
 	field(INP,  "@qds.proto get_event_count ${SP2}")
 	field(SCAN, "I/O Intr")
-#	field(FLNK, "${UUT}:QDS:EVENT PP")
-	field(FLNK, "${UUT}:QDS:EVENTcalc")
+	field(FLNK, "${UUT}:QDS:EVENT PP")
 }
 
 record(longin, "${UUT}:QDS:BUFFER_COUNT"){
