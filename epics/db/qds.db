@@ -80,12 +80,13 @@ record(bi, "${UUT}:QDS:EVENT") {
 }
 
 record(calcout, "${UUT}:QDS:hbcalc") {
-	field(SCAN, "1 second")
+	field(SCAN, ".5 second")
 	field(INPA, "${UUT}:QDS:BUFFER_COUNT")
 	field(INPB, "${UUT}:QDS:hbcalc.LA")
+	field(INPC, "${UUT}:QDS:hbcalc")
 # toggle if counting	
-	field(CALC, "A != B ? A&1: 0")
-	field(OUT,  "${UUT}:QDS:HEART")
+	field(CALC, "A != B ? !C: 0")
+	field(OUT,  "${UUT}:QDS:HEART PP")
 }
 
 record(bo, "${UUT}:QDS:HEART") {
